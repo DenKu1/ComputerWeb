@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ComputerNet.WEB.Models.DeviceVM>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index-Device";
+}
+
+<div class="jumbotron py-2">
+    <p>Search by logic address</p>
+    @using (Html.BeginForm("SearchByLogicAddress", "Device", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <input class="form-control text-box single-line" id="LogicAddress" name="LogicAddress" type="number" value="" />
+        <input type="submit" class="btn btn-default" />
+    }
+<hr>
+    <p>Search by hardware address</p>
+    @using (Html.BeginForm("SearchByHardwareAddress", "Device", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <input class="form-control text-box single-line" id="HardwareAddress" name="HardwareAddress" type="text" value="" />
+        <input type="submit" class="btn btn-default" />
+    }
+<hr>
+    <p>Search by model</p>
+    @using (Html.BeginForm("SearchByModel", "Device", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <input class="form-control text-box single-line" id="Model" name="Model" type="text" value="" />
+        <input type="submit" class="btn btn-default" />
+    }
+<hr>
+    <p>Search by manufacture date</p>
+    @using (Html.BeginForm("SearchByManufactureDate", "Device", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <input class="form-control text-box single-line" id="Manufactured" name="Manufactured" type="datetime" value="" />
+        <input type="submit" class="btn btn-default" />
+    }
+<hr>
+    <p>Search by room number</p>
+    @using (Html.BeginForm("SearchByRoomNumber", "Device", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <input class="form-control text-box single-line" id="Number" name="Number" type="number" value="" />
+        <input type="submit" class="btn btn-default" />
+    }
+<hr>
+    <p>Search by building name</p>
+    @using (Html.BeginForm("SearchByBuildingName", "Device", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <input class="form-control text-box single-line" id="Name" name="Name" type="text" value="" />
+        <input type="submit" class="btn btn-default" />
+    }
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufactured)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LogicAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HardwareAddress)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufactured)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LogicAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HardwareAddress)
+                </td>
+            </tr>
+        }
+    }
+</table>

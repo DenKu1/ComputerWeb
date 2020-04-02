@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ComputerNet.WEB.Models.ComputerVM>
+
+@{
+    ViewBag.Title = "Computers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufactured)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LogicAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mask)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HardwareAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RouterId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufactured)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LogicAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mask)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HardwareAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RouterId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |           
+            @Html.ActionLink("Set IP", "Index", "Network", new { id = item.Id }, null) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>
