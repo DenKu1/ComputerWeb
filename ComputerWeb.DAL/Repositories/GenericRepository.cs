@@ -1,54 +1,75 @@
 ﻿using ComputerNet.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
 namespace ComputerNet.DAL.Repositories
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class, IRequireId
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        private readonly List<TEntity> _set;
+        private readonly GalleryDbContext context;
+        private readonly DbSet<TEntity> dbSet;
 
-        public GenericRepository()
+        public GenericRepository(GalleryDbContext context)
         {
-            _set = Container.Set<TEntity>();
+            System.Diagnostics.Debug.WriteLine($"Generic repository created!{typeof(TEntity)}");
+
+            this.context = context;
+            this.dbSet = context.Set<TEntity>();
         }
 
-        public void Create(TEntity entity)
+        public virtual void Create(TEntity entity)
         {
-            _set.Add(entity);
-        }
-        public virtual IEnumerable<TEntity> GetAll()
-        {
-            return _set;
+            dbSet.Add(entity);
         }
 
-        public void Delete(int id)
+        public virtual IEnumerable<TEntity> Get(
+            Expression<Func<TEntity, bool>> filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null)
         {
-           TEntity entity = _set.Where(e => e.Id == id).FirstOrDefault();
-            if (entity != null)
+            IQueryable<TEntity> query = dbSet;
+
+            if (filter != null)
             {
-                _set.Remove(entity);
+                query = query.Where(filter);
+            }
+
+            if (orderBy != null)
+            {
+                return orderBy(query).ToList();
+            }
+            else
+            {
+                return query.ToList();
             }
         }
 
-        public TEntity GetById(int id)
+        public virtual TEntity GetById(int id)
         {
-            return _set.Where(e => e.Id == id).FirstOrDefault();
+            return dbSet.Find(id);
         }
 
-        public void Update(TEntity entityToUpdate)
-        {            
-            var entity = _set.Where(e => e.Id == entityToUpdate.Id).FirstOrDefault();
+        public virtual void Update(TEntity entityToUpdate)
+        {
+            dbSet.Attach(entityToUpdate);
+            context.Entry(entityToUpdate).State = EntityState.Modified;
+        }
 
-            if (entity != null)
+        public virtual void Delete(int id)
+        {
+            TEntity entityToDelete = dbSet.Find(id);
+            Delete(entityToDelete);
+        }
+
+        public virtual void Delete(TEntity entityToDelete)
+        {
+            if (context.Entry(entityToDelete).State == EntityState.Detached)
             {
-                int index = _set.IndexOf(entity);
-
-                _set[index] = entityToUpdate;     
+                dbSet.Attach(entityToDelete);
             }
-            
+            dbSet.Remove(entityToDelete);
         }
     }
 }

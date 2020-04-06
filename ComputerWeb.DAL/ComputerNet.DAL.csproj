@@ -60,7 +60,6 @@
   <ItemGroup>
     <Compile Include="ComputerNetContext.cs" />
     <Compile Include="ComputerNetDbInitializer.cs" />
-    <Compile Include="Container.cs" />
     <Compile Include="Entities\Building.cs" />
     <Compile Include="Entities\Computer.cs" />
     <Compile Include="Entities\Room.cs" />

@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ComputerNet.DAL.Entities;
+using System.Data.Entity;
 
 namespace ComputerWeb.DAL
 {
-    class ComputerNetContext
+    class ComputerNetContext : DbContext
     {
+        public DbSet<Building> Buildings { get; set; }
+        public DbSet<Computer> Computers { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<Router> Routers { get; set; }
+
+        static ComputerNetContext()
+        {
+            Database.SetInitializer(new ComputerNetDbInitializer());
+        }
+
+        public ComputerNetContext() : base("ComputerNetDBConnection")
+        {
+        }
     }
 }
