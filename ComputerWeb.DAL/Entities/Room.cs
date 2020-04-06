@@ -1,9 +1,8 @@
-﻿using ComputerNet.DAL.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ComputerNet.DAL.Entities
 {
-    public class Room : IRequireId
+    public class Room
     {
         public int Id { get; set; }
         public int Number { get; set; }
