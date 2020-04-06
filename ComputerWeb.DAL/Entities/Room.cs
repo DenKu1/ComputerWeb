@@ -8,10 +8,10 @@ namespace ComputerNet.DAL.Entities
         public int Number { get; set; }
 
         public int BuildingId { get; set; }
-        public Building Building { get; set; }
+        public virtual Building Building { get; set; }
 
-        public ICollection<Router> Routers { get; set; }
-        public ICollection<Computer> Computers { get; set; }
+        public virtual ICollection<Router> Routers { get; set; }
+        public virtual ICollection<Computer> Computers { get; set; }
 
         public Room()
         {

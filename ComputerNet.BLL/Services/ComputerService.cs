@@ -8,7 +8,7 @@ namespace ComputerNet.BLL.Services
 {
     public class ComputerService : GenericService<Computer, ComputerDTO>
     {
-        public ComputerService(IGenericRepository<Computer> repository, IMapper mapper) : base(repository, mapper)
+        public ComputerService(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
         {         
         }
     }

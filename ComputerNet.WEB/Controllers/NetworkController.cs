@@ -45,7 +45,7 @@ namespace ComputerNet.WEB.Controllers
             }
 
             var oldComputerDTO = _computerService.GetById(id.Value);
-            var routerDTO = _routerService.GetById(oldComputerDTO.RouterId);
+            var routerDTO = _routerService.GetById(oldComputerDTO.RouterId.Value);
 
             if (!_networkService.CheckIPRange(id.Value, logicAddress))
             {

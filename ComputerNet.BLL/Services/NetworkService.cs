@@ -9,15 +9,15 @@ namespace ComputerNet.BLL.Services
     public class NetworkService : INetworkService
     {
         protected readonly IMapper _mp;
+        protected readonly IUnitOfWork _db;
         protected readonly IGenericRepository<Computer> _computerRepo;
         protected readonly IGenericRepository<Router> _routerRepo;
 
-        public NetworkService(IGenericRepository<Computer> computerRepository,
-                             IGenericRepository<Router> routerRepository,
-                             IMapper mapper)
+        public NetworkService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _computerRepo = computerRepository;
-            _routerRepo = routerRepository;
+            _db = unitOfWork;
+            _computerRepo = unitOfWork.Computers;
+            _routerRepo = unitOfWork.Routers;
             _mp = mapper;
         }
 
@@ -29,15 +29,21 @@ namespace ComputerNet.BLL.Services
             }
 
             Computer computer = _computerRepo.GetById(computerId);
-            Router router = _routerRepo.GetById(computer.RouterId);
 
-            if (computer == null)
+            if (computer == null || computer.RouterId == null)
             {
                 return false;
             }
-                        
-            long routerIP = router.LogicAddress;
-            long mask = router.Mask;
+
+            Router router = _routerRepo.GetById(computer.RouterId.Value);
+
+            if (router.LogicAddress == null || router.Mask == null)
+            {
+                return false;
+            }    
+
+            long routerIP = router.LogicAddress.Value;
+            long mask = router.Mask.Value;
 
             if (routerIP == computerIP)
             {
@@ -45,6 +51,11 @@ namespace ComputerNet.BLL.Services
             }
 
             return (routerIP & mask) == (computerIP & mask);
+        }
+
+        public void Dispose()
+        {
+            _db.Dispose();
         }
     }
 }

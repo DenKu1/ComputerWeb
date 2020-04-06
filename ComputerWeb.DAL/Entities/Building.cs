@@ -9,7 +9,7 @@ namespace ComputerNet.DAL.Entities
         [Required]
         public string Name { get; set; }
 
-        public ICollection<Room> Rooms { get; set; }
+        public virtual ICollection<Room> Rooms { get; set; }
 
         public Building()
         {

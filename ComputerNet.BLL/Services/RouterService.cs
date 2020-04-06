@@ -7,7 +7,7 @@ namespace ComputerNet.BLL.Services
 {
     public class RouterService : GenericService<Router, RouterDTO>
     {
-        public RouterService(IGenericRepository<Router> repository, IMapper mapper) : base(repository, mapper)
+        public RouterService(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
         {
         }
     }

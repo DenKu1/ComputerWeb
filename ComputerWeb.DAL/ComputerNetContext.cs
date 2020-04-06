@@ -1,9 +1,9 @@
 ﻿using ComputerNet.DAL.Entities;
 using System.Data.Entity;
 
-namespace ComputerWeb.DAL
+namespace ComputerNet.DAL
 {
-    class ComputerNetContext : DbContext
+    public class ComputerNetContext : DbContext
     {
         public DbSet<Building> Buildings { get; set; }
         public DbSet<Computer> Computers { get; set; }

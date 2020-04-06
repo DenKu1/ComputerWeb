@@ -11,8 +11,8 @@ namespace ComputerNet.WEB.Models
         public string Model { get; set; }
         [Required]
         public DateTime Manufactured { get; set; }
-        public long LogicAddress { get; set; }
-        public long Mask { get; set; }
+        public long? LogicAddress { get; set; }
+        public long? Mask { get; set; }
         [Required]
         public string HardwareAddress { get; set; }
         [Required]

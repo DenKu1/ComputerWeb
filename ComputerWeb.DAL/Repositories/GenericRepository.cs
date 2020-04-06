@@ -1,4 +1,5 @@
 ﻿using ComputerNet.DAL.Interfaces;
+using ComputerNet.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,10 +10,10 @@ namespace ComputerNet.DAL.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        private readonly GalleryDbContext context;
+        private readonly ComputerNetContext context;
         private readonly DbSet<TEntity> dbSet;
 
-        public GenericRepository(GalleryDbContext context)
+        public GenericRepository(ComputerNetContext context)
         {
             System.Diagnostics.Debug.WriteLine($"Generic repository created!{typeof(TEntity)}");
 

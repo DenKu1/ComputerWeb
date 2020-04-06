@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using ComputerNet.DAL.Entities;
 
-namespace ComputerWeb.DAL
+namespace ComputerNet.DAL
 {
     class ComputerNetDbInitializer : DropCreateDatabaseAlways<ComputerNetContext>
     {
         protected override void Seed(ComputerNetContext db)
         {
-            Computer c1 = new Computer { Id = 1, Model = "PC", Manufactured = DateTime.Now, HardwareAddress = "90-1F-12-22-33-55", LogicAddress = 2, };
-            Computer c2 = new Computer { Id = 2, Model = "PC2", Manufactured = DateTime.Now.AddDays(-1), HardwareAddress = "90-1F-12-22-33-54", LogicAddress = 22 };
+            Computer c1 = new Computer { Id = 1, Model = "PC", Manufactured = DateTime.Now, HardwareAddress = "90-1F-12-22-33-55"};
+            Computer c2 = new Computer { Id = 2, Model = "PC2", Manufactured = DateTime.Now.AddDays(-1), HardwareAddress = "90-1F-12-22-33-54"};
 
             Router r1 = new Router { Id = 1, Model = "R1", Manufactured = DateTime.Now, HardwareAddress = "90-1F-12-22-33-53", LogicAddress = 33, Mask = 4294967040, Computers = new List<Computer> { c1, c2 } };
 

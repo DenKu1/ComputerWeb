@@ -1,23 +1,23 @@
 ﻿using AutoMapper;
 using ComputerNet.BLL.Interfaces;
 using ComputerNet.DAL.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ComputerNet.BLL.Services
 {
     public class GenericService<TEntity, TEntityDTO> : IGenericService<TEntityDTO>
-        where TEntity : class, IRequireId
-        where TEntityDTO : class, IRequireId
+        where TEntity : class
+        where TEntityDTO : class
     {
         protected readonly IMapper _mp;
+        protected readonly IUnitOfWork _db;
         protected readonly IGenericRepository<TEntity> _repo;
 
-        public GenericService(IGenericRepository<TEntity> repository, IMapper mapper)
+        public GenericService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _repo = repository;
+            _db = unitOfWork;
             _mp = mapper;
+            _repo = unitOfWork.Set<TEntity>();
         }
 
         public virtual void Create(TEntityDTO itemDTO)
@@ -29,17 +29,19 @@ namespace ComputerNet.BLL.Services
 
             TEntity item = _mp.Map<TEntity>(itemDTO);
 
-            _repo.Create(item);           
+            _repo.Create(item);
+            _db.Save();
         }
 
         public virtual void Delete(int id)
         {
             _repo.Delete(id);
+            _db.Save();
         }
 
         public virtual IEnumerable<TEntityDTO> GetAll()
         {
-            IEnumerable<TEntity> items = _repo.GetAll();
+            IEnumerable<TEntity> items = _repo.Get();
 
             return _mp.Map<IEnumerable<TEntityDTO>>(items);
         }
@@ -57,14 +59,16 @@ namespace ComputerNet.BLL.Services
             {
                 return;
             }
+           
+            TEntity itemToUpdate = _mp.Map<TEntity>(itemToUpdateDTO);
 
-            TEntity item = _repo.GetById(itemToUpdateDTO.Id);
-            if (item != null)
-            {
-                TEntity itemToUpdate = _mp.Map<TEntity>(itemToUpdateDTO);
+            _repo.Update(itemToUpdate);
+            _db.Save();
+        }
 
-                _repo.Update(itemToUpdate);            
-            }
+        public void Dispose()
+        {
+            _db.Dispose();
         }
     }
 }

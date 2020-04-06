@@ -7,8 +7,8 @@ namespace ComputerNet.DAL.Entities
     public class Router
     {
         public int Id { get; set; } 
-        public long LogicAddress { get; set; }
-        public long Mask { get; set; }
+        public long? LogicAddress { get; set; }
+        public long? Mask { get; set; }
         [Required]
         public string Model { get; set; }
         [Required]
@@ -16,9 +16,9 @@ namespace ComputerNet.DAL.Entities
         public DateTime Manufactured { get; set; }
 
         public int RoomId { get; set; }
-        public Room Room { get; set; }
+        public virtual Room Room { get; set; }
         
-        public ICollection<Computer> Computers { get; set; }
+        public virtual ICollection<Computer> Computers { get; set; }
 
         public Router()
         {

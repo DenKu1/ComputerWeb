@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ComputerNet.BLL.Interfaces
 {
-    public interface IGenericService<TEntityDTO>
+    public interface IGenericService<TEntityDTO> : IDisposable
     {
         void Create(TEntityDTO item);
         TEntityDTO GetById(int id);

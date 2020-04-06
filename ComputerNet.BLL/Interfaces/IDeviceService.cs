@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ComputerNet.BLL.Interfaces
 {
-    public interface IDeviceService
+    public interface IDeviceService : IDisposable
     {
         IEnumerable<DeviceDTO> SearchByLogicAddress(long adress);
 

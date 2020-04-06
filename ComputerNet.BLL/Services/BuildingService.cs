@@ -7,7 +7,7 @@ namespace ComputerNet.BLL.Services
 {
     public class BuildingService : GenericService<Building, BuildingDTO>
     {
-        public BuildingService(IGenericRepository<Building> repository, IMapper mapper) : base(repository, mapper)
+        public BuildingService(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
         {
         }
     }

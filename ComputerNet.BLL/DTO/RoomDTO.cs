@@ -2,7 +2,7 @@
 
 namespace ComputerNet.BLL.DTO
 {
-    public class RoomDTO : IRequireId
+    public class RoomDTO
     {
         public int Id { get; set; }
         public int Number { get; set; }

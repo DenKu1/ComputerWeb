@@ -7,7 +7,7 @@ namespace ComputerNet.BLL.Services
 {
     public class RoomService : GenericService<Room, RoomDTO>
     {
-        public RoomService(IGenericRepository<Room> repository, IMapper mapper) : base(repository, mapper)
+        public RoomService(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
         {
         }
     }
