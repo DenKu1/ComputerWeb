@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerNet.BLL", "Computer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerNet.WEB", "ComputerNet.WEB\ComputerNet.WEB.csproj", "{F5A51C33-5057-4D51-A739-8F9A74E9142D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerNet.API", "ComputerNet.API\ComputerNet.API.csproj", "{35D0E931-2E9B-4DE6-94AA-C9BEC7257333}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F5A51C33-5057-4D51-A739-8F9A74E9142D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5A51C33-5057-4D51-A739-8F9A74E9142D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5A51C33-5057-4D51-A739-8F9A74E9142D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35D0E931-2E9B-4DE6-94AA-C9BEC7257333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35D0E931-2E9B-4DE6-94AA-C9BEC7257333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35D0E931-2E9B-4DE6-94AA-C9BEC7257333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35D0E931-2E9B-4DE6-94AA-C9BEC7257333}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

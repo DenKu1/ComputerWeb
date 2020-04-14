@@ -14,9 +14,7 @@ namespace ComputerNet.DAL.Repositories
         private readonly DbSet<TEntity> dbSet;
 
         public GenericRepository(ComputerNetContext context)
-        {
-            System.Diagnostics.Debug.WriteLine($"Generic repository created!{typeof(TEntity)}");
-
+        {            
             this.context = context;
             this.dbSet = context.Set<TEntity>();
         }
