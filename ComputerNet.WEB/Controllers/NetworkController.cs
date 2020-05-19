@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace ComputerNet.WEB.Controllers
 {
+    [Authorize]
     public class NetworkController : Controller
     {
         private readonly IGenericService<ComputerDTO> _computerService;

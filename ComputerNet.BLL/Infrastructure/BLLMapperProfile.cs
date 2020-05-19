@@ -6,18 +6,22 @@ namespace ComputerNet.BLL.Infrastructure
     {
         public BLLMapperProfile()
         {
-            CreateMap<BLL.DTO.BuildingDTO, DAL.Entities.Building>();
-            CreateMap<BLL.DTO.ComputerDTO, DAL.Entities.Computer>();
-            CreateMap<BLL.DTO.RoomDTO, DAL.Entities.Room>();
-            CreateMap<BLL.DTO.RouterDTO, DAL.Entities.Router>();
+            CreateMap<DTO.UserRegisterDTO, DAL.Entities.User>();
 
-            CreateMap<DAL.Entities.Building, BLL.DTO.BuildingDTO>();
-            CreateMap<DAL.Entities.Computer, BLL.DTO.ComputerDTO>();
-            CreateMap<DAL.Entities.Room, BLL.DTO.RoomDTO>();
-            CreateMap<DAL.Entities.Router, BLL.DTO.RouterDTO>();
+            CreateMap<DTO.BuildingDTO, DAL.Entities.Building>();
+            CreateMap<DAL.Entities.Building, DTO.BuildingDTO>();
 
-            CreateMap<DAL.Entities.Router, BLL.DTO.DeviceDTO>();
+            CreateMap<DTO.ComputerDTO, DAL.Entities.Computer>();
+            CreateMap<DAL.Entities.Computer, DTO.ComputerDTO>();
             CreateMap<DAL.Entities.Computer, BLL.DTO.DeviceDTO>();
+
+            CreateMap<DTO.RoomDTO, DAL.Entities.Room>();
+            CreateMap<DAL.Entities.Room, DTO.RoomDTO>();
+
+            CreateMap<DTO.RouterDTO, DAL.Entities.Router>();
+            CreateMap<DAL.Entities.Router, BLL.DTO.RouterDTO>();
+            CreateMap<DAL.Entities.Router, BLL.DTO.DeviceDTO>();
+
         }
     }
 }

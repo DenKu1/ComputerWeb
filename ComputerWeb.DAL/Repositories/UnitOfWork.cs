@@ -1,12 +1,14 @@
 ﻿using ComputerNet.DAL.Entities;
 using ComputerNet.DAL.Interfaces;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 
 namespace ComputerNet.DAL.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly ComputerNetContext context;
+        private ComputerNetContext context;
+
         private GenericRepository<Building> buildings;
         private GenericRepository<Computer> computers;
         private GenericRepository<Room> rooms;
@@ -14,9 +16,11 @@ namespace ComputerNet.DAL.Repositories
 
         public UnitOfWork()
         {
-            System.Diagnostics.Debug.WriteLine("Unit of work created!"); //!
             context = new ComputerNetContext();
+            UserManager = new ApplicationUserManager(new UserStore<User>(context));
         }
+
+        public ApplicationUserManager UserManager { get; }
 
         public GenericRepository<Building> Buildings =>
             buildings ?? (buildings = new GenericRepository<Building>(context));

@@ -10,12 +10,13 @@ namespace ComputerNet.WEB.Infrastructure
     {
         public override void Load()
         {
+            Bind<IUserService>().To<UserService>().InRequestScope();
             Bind<IGenericService<BuildingDTO>>().To<BuildingService>().InRequestScope();
             Bind<IGenericService<ComputerDTO>>().To<ComputerService>().InRequestScope();
             Bind<IGenericService<RoomDTO>>().To<RoomService>().InRequestScope();
             Bind<IGenericService<RouterDTO>>().To<RouterService>().InRequestScope();
             Bind<IDeviceService>().To<DeviceService>().InRequestScope();
-            Bind<INetworkService>().To<NetworkService>().InRequestScope();
+            Bind<INetworkService>().To<NetworkService>().InRequestScope();            
         }
     }
 }

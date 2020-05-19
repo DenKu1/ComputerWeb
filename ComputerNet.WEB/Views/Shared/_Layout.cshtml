@@ -31,6 +31,23 @@
                 @Html.ActionLink("Search devices", "Index", "Device", null, new { @class = "nav-link" })
             </li>
         </ul>
+        <ul class="navbar-nav ml-auto">
+            @if (User.Identity.IsAuthenticated)
+            {
+            <li class="nav-item dropdown">
+                <div class="navbar-text dropdown-toggle" id="navbardrop" data-toggle="dropdown">Account: @User.Identity.Name</div>
+                <div class="dropdown-menu dropdown-menu-right">
+                    @Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "dropdown-item" })
+                </div>
+            </li>
+            }
+            else 
+            {
+            <li class="nav-item">
+                @Html.ActionLink("Login here", "Login", "Account", null, new { @class = "nav-link" })
+            </li>            
+            }
+        </ul>
     </nav>
     <div class="p-5">
         @RenderBody()  

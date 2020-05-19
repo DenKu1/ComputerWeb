@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace ComputerNet.WEB.Controllers
 {
+    [Authorize]
     public class DeviceController : Controller
     {
         private readonly IDeviceService _service;

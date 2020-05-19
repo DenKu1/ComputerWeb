@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace ComputerNet.WEB.Controllers
 {
+    [Authorize]
     public class ComputerController : GenericController<ComputerDTO, ComputerVM>
     {
         public ComputerController(IMapper mapper, IGenericService<ComputerDTO> service) : base(mapper, service)
