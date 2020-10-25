@@ -181,10 +181,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Device\Index.cshtml" />
     <Content Include="Views\Network\Index.cshtml" />
-    <Content Include="Views\Device\Computer\Index.cshtml" />
-    <Content Include="Views\Device\Computer\Create.cshtml" />
-    <Content Include="Views\Device\Computer\Delete.cshtml" />
-    <Content Include="Views\Device\Computer\Edit.cshtml" />
+    <Content Include="Views\Computer\Index.cshtml" />
+    <Content Include="Views\Computer\Create.cshtml" />
+    <Content Include="Views\Computer\Delete.cshtml" />
+    <Content Include="Views\Computer\Edit.cshtml" />
     <Content Include="Views\Building\Index.cshtml" />
     <Content Include="Views\Building\Edit.cshtml" />
     <Content Include="Views\Building\Delete.cshtml" />
