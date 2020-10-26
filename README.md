@@ -1,6 +1,6 @@
 # ComputerWeb
 ComputerNet is a 3-layered ASP.NET application which represents a computer network.
-Application privades REST API for develepores and ASP.MVC 5 interface for users.
+Application provides REST API for developers and ASP.MVC 5 interface for users.
 
 Main functionality:
 + CRUD operations for router, computer, case, room and equipment
