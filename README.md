@@ -18,9 +18,6 @@ Main features:
 + Automapper
 + Bootstrap 4
 
-UML diagrams:
-+ Use-case diagram (https://drive.google.com/file/d/1xPgLqRZ9-5h3ohYoBszr4hFVVpHWG0wp/view?usp=sharing)
-
 Created for study purposes.
 
 Created by DenKu1 (https://github.com/DenKu1)
